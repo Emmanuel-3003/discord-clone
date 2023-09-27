@@ -70,7 +70,9 @@ def home(request):
 
     topics = Topic.objects.all()
     rooms_count = rooms.count()
-    context = {'rooms': rooms, 'topics': topics, 'room_count': rooms_count}
+    room_messages = Message.objects.all()
+
+    context = {'rooms': rooms, 'topics': topics, 'room_count': rooms_count, 'room_messages': room_messages}
     return render(request, 'base/home.html', context)
 
 def room(request, pk):
